@@ -28,14 +28,16 @@
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:srcCompat="@android:drawable/ic_menu_camera" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/imageViewUploadUndetectedVideo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@+id/imageButtonCamVideoRecord"
+        android:layout_width="85dp"
+        android:layout_height="66dp"
+        android:onClick="openStorageFolder"
+        app:layout_constraintTop_toTopOf="@id/imageButtonCamVideoRecord"
+        app:layout_constraintBottom_toBottomOf="@id/imageButtonCamVideoRecord"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_launcher_foreground"
-        tools:layout_editor_absoluteY="493dp" />
+        app:layout_constraintEnd_toStartOf="@id/imageButtonCamVideoRecord"
+        app:srcCompat="@android:drawable/ic_menu_upload"  />
 
     <ImageView
         android:id="@+id/imageViewVideoSamples"

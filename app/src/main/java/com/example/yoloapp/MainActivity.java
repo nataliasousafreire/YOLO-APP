@@ -3,20 +3,28 @@ package com.example.yoloapp;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.MediaController;
 import android.widget.Toast;
+
+import java.io.File;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final int VIDEO_REQUEST = 999;
+    private static final int REQUEST_TAKE_GALLERY_VIDEO = 888;
 
     private ImageButton camButton;
+    private ImageButton uploadButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         camButton = findViewById(R.id.imageButtonCamVideoRecord);
+        uploadButton = findViewById(R.id.imageViewUploadUndetectedVideo);
+
     }
 
     public void recordVideo( View v){
@@ -31,6 +41,14 @@ public class MainActivity extends AppCompatActivity {
 
         intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
         startActivityForResult( intent, VIDEO_REQUEST);
+    }
+
+    public void openStorageFolder(View v) {
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        Uri uri = Uri.parse(Environment.getExternalStorageDirectory().getPath()
+                +  File.separator + "myFolder" + File.separator);
+        intent.setDataAndType(uri, "video/*");
+        startActivityForResult(intent, REQUEST_TAKE_GALLERY_VIDEO);
     }
 
     @Override
@@ -46,6 +64,19 @@ public class MainActivity extends AppCompatActivity {
             uri = data.getData();
             toast = Toast.makeText(this.getApplicationContext(), "Imagem carregada!", Toast.LENGTH_LONG);
             toast.show();
+        }
+
+        if (requestCode == REQUEST_TAKE_GALLERY_VIDEO) {
+
+            Uri selectedVideo = data.getData();
+            String selectedVideoPath = selectedVideo.getPath();
+
+//            Toast toast = Toast.makeText(this.getApplicationContext(), "Path is: " + selectedVideoPath, Toast.LENGTH_LONG);
+//            toast.show();
+
+            Intent videoPlayer = new Intent(this, VideoActivity.class);
+            videoPlayer.putExtra("VIDEO_PATH", selectedVideoPath);
+            startActivity(videoPlayer);
         }
     }
 }
