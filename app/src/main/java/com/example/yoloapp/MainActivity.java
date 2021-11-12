@@ -53,30 +53,36 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        try{
+            super.onActivityResult(requestCode, resultCode, data);
+            switch ( requestCode){
+                case VIDEO_REQUEST:
+                    Uri uri;
 
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == VIDEO_REQUEST) {
-            Uri uri;
+                    Toast toast;
 
-            Toast toast;
+                    //video
+                    uri = data.getData();
+                    Log.d( "video-capturado", "source-path: "+uri.getPath());
 
-            //video
-            uri = data.getData();
-            toast = Toast.makeText(this.getApplicationContext(), "Imagem carregada!", Toast.LENGTH_LONG);
-            toast.show();
-        }
+        //            toast = Toast.makeText(this.getApplicationContext(), "Imagem carregada!", Toast.LENGTH_LONG);
+        //            toast.show();
+                break;
+                case REQUEST_TAKE_GALLERY_VIDEO:
 
-        if (requestCode == REQUEST_TAKE_GALLERY_VIDEO) {
+                    Uri selectedVideo = data.getData();
+                    String selectedVideoPath = selectedVideo.getPath();
 
-            Uri selectedVideo = data.getData();
-            String selectedVideoPath = selectedVideo.getPath();
+        //            Toast toast = Toast.makeText(this.getApplicationContext(), "Path is: " + selectedVideoPath, Toast.LENGTH_LONG);
+        //            toast.show();
 
-//            Toast toast = Toast.makeText(this.getApplicationContext(), "Path is: " + selectedVideoPath, Toast.LENGTH_LONG);
-//            toast.show();
-
-            Intent videoPlayer = new Intent(this, VideoActivity.class);
-            videoPlayer.putExtra("VIDEO_PATH", selectedVideoPath);
-            startActivity(videoPlayer);
+                    Intent videoPlayer = new Intent(this, VideoActivity.class);
+                    videoPlayer.putExtra("VIDEO_PATH", selectedVideoPath);
+                    startActivity(videoPlayer);
+                break;
+            }
+        }catch( Exception e){
+            Log.e( "onActivityR", "exceptionThrown", e);
         }
     }
 }
