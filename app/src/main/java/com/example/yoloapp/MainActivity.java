@@ -53,30 +53,26 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         try{
-            super.onActivityResult(requestCode, resultCode, data);
             switch ( requestCode){
                 case VIDEO_REQUEST:
-                    Uri uri;
+                    Uri selectedVideo;
+                    String selectedVideoPath;
+                    Intent videoPlayer;
 
-                    Toast toast;
-
-                    //video
-                    uri = data.getData();
-                    Log.d( "video-capturado", "source-path: "+uri.getPath());
-
-        //            toast = Toast.makeText(this.getApplicationContext(), "Imagem carregada!", Toast.LENGTH_LONG);
-        //            toast.show();
+                    selectedVideo = data.getData();
+                    selectedVideoPath = selectedVideo.getPath();
+                    videoPlayer = new Intent(this, VideoActivity.class);
+                    Log.d( "video-capturado", "source-path: "+selectedVideoPath);
+                    videoPlayer.putExtra("VIDEO_PATH", selectedVideoPath);
+                    startActivity(videoPlayer);
                 break;
                 case REQUEST_TAKE_GALLERY_VIDEO:
 
-                    Uri selectedVideo = data.getData();
-                    String selectedVideoPath = selectedVideo.getPath();
-
-        //            Toast toast = Toast.makeText(this.getApplicationContext(), "Path is: " + selectedVideoPath, Toast.LENGTH_LONG);
-        //            toast.show();
-
-                    Intent videoPlayer = new Intent(this, VideoActivity.class);
+                    selectedVideo = data.getData();
+                    selectedVideoPath = selectedVideo.getPath();
+                    videoPlayer = new Intent(this, VideoActivity.class);
                     videoPlayer.putExtra("VIDEO_PATH", selectedVideoPath);
                     startActivity(videoPlayer);
                 break;
