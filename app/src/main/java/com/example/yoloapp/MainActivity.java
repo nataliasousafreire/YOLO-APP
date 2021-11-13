@@ -31,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        camButton = findViewById(R.id.imageButtonCamVideoRecord);
-        uploadButton = findViewById(R.id.imageViewUploadUndetectedVideo);
+        this.camButton = findViewById(R.id.imageButtonCamVideoRecord);
+        this.uploadButton = findViewById(R.id.imageViewUploadUndetectedVideo);
 
     }
 
@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent;
 
         intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+        intent.putExtra( MediaStore.EXTRA_DURATION_LIMIT, 10);
         startActivityForResult( intent, VIDEO_REQUEST);
     }
 
@@ -55,30 +56,38 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         try{
-            switch ( requestCode){
-                case VIDEO_REQUEST:
-                    Uri selectedVideo;
-                    String selectedVideoPath;
-                    Intent videoPlayer;
+            if( resultCode == RESULT_OK){
+                switch ( requestCode){
+                    case VIDEO_REQUEST:
+                        Uri selectedVideo;
+                        String selectedVideoPath;
+                        Intent videoPlayer;
+                        File file;
 
-                    selectedVideo = data.getData();
-                    selectedVideoPath = selectedVideo.getPath();
-                    videoPlayer = new Intent(this, VideoActivity.class);
-                    Log.d( "video-capturado", "source-path: "+selectedVideoPath);
-                    videoPlayer.putExtra("VIDEO_PATH", selectedVideoPath);
-                    startActivity(videoPlayer);
-                break;
-                case REQUEST_TAKE_GALLERY_VIDEO:
+                        selectedVideo = data.getData();
+                        selectedVideoPath = selectedVideo.getPath();
+                        videoPlayer = new Intent(this, VideoActivity.class);
+                        Log.d( "recordVideo", "source-path: "+selectedVideoPath);
+                        videoPlayer.putExtra("VIDEO_PATH", selectedVideoPath);
+                        videoPlayer.putExtra("VIDEO_URI", selectedVideo);
+                        startActivity(videoPlayer);
 
-                    selectedVideo = data.getData();
-                    selectedVideoPath = selectedVideo.getPath();
-                    videoPlayer = new Intent(this, VideoActivity.class);
-                    videoPlayer.putExtra("VIDEO_PATH", selectedVideoPath);
-                    startActivity(videoPlayer);
-                break;
+
+                        break;
+                    case REQUEST_TAKE_GALLERY_VIDEO:
+
+                        selectedVideo = data.getData();
+                        selectedVideoPath = selectedVideo.getPath();
+                        videoPlayer = new Intent(this, VideoActivity.class);
+                        videoPlayer.putExtra("VIDEO_PATH", selectedVideoPath);
+                        videoPlayer.putExtra("VIDEO_URI", selectedVideo);
+                        startActivity(videoPlayer);
+                        break;
+                }
             }
+
         }catch( Exception e){
-            Log.e( "onActivityR", "exceptionThrown", e);
+            Log.e( "onActivityResult", "exceptionThrown", e);
         }
     }
 }
