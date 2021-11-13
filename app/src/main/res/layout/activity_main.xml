@@ -4,46 +4,137 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gray"
+    android:background="@color/black"
+    android:backgroundTint="#FFFFFF"
     tools:context=".MainActivity">
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/imageButtonCamVideoRecord"
-        android:layout_width="85dp"
-        android:layout_height="66dp"
-        android:onClick="recordVideo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:srcCompat="@android:drawable/ic_menu_camera" />
-
-    <ImageView
-        android:id="@+id/imageViewUploadUndetectedVideo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@+id/imageButtonCamVideoRecord"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_launcher_foreground"
-        tools:layout_editor_absoluteY="493dp" />
 
     <ImageView
         android:id="@+id/imageViewVideoSamples"
+        android:layout_width="120dp"
+        android:layout_height="110dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="40dp"
+        android:background="#1B1A1A"
+        android:backgroundTint="#171616"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/sym_contact_card" />
+
+    <ImageView
+        android:id="@+id/imageViewUploadUndetectedVideo"
+        android:layout_width="120dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="40dp"
+        android:background="#252323"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_launcher_foreground"
+        tools:srcCompat="@android:drawable/ic_menu_upload" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="408dp"
+        android:layout_height="81dp"
+        android:layout_marginTop="116dp"
+        android:background="#0B0B0B"
+        android:backgroundTint="#673AB7"
+        android:text='"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore  '
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="418dp"
+        android:layout_height="90dp"
+        android:background="#BCB3B3"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="-3dp">
+
+        <ImageView
+            android:id="@+id/imageViewLogo"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="76dp"
+            android:background="#050505"
+            android:backgroundTint="#100F0F"
+            app:srcCompat="@android:drawable/ic_dialog_dialer" />
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="191dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#352E2E"
+            app:srcCompat="@android:drawable/ic_dialog_map" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="90dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageViewCamVideoRecord"
+        android:layout_width="120dp"
+        android:layout_height="110dp"
+        android:background="#151515"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewVideoSamples"
+        app:layout_constraintHorizontal_bias="0.419"
+        app:layout_constraintStart_toEndOf="@+id/imageViewUploadUndetectedVideo"
+        app:srcCompat="@android:drawable/ic_menu_camera"
+        tools:layout_editor_absoluteY="581dp" />
+
+    <FrameLayout
+        android:layout_width="416dp"
+        android:layout_height="358dp"
+        android:background="#3C3A3A"
+        tools:layout_editor_absoluteX="-4dp"
+        tools:layout_editor_absoluteY="209dp" >
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="412dp"
+            android:layout_height="346dp"
+            app:srcCompat="@drawable/images"
+            tools:srcCompat="@drawable/images" />
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/textViewUpload"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Upload"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/textViewVideo"
+        app:layout_constraintHorizontal_bias="0.356"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="696dp" />
+
+    <TextView
+        android:id="@+id/textViewVideo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vídeo"
+        android:textSize="24sp"
+        tools:layout_editor_absoluteX="175dp"
+        tools:layout_editor_absoluteY="696dp" />
+
+    <TextView
+        android:id="@+id/textViewArquivos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Arquivos"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageButtonCamVideoRecord"
-        app:srcCompat="@drawable/ic_launcher_foreground"
-        tools:layout_editor_absoluteY="493dp" />
+        app:layout_constraintHorizontal_bias="0.74"
+        app:layout_constraintStart_toEndOf="@+id/textViewVideo"
+        tools:layout_editor_absoluteY="696dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
