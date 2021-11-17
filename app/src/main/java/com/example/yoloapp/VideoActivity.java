@@ -3,14 +3,10 @@ package com.example.yoloapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.widget.MediaController;
-import android.widget.Toast;
 import android.widget.VideoView;
 
 public class VideoActivity extends AppCompatActivity {
@@ -34,7 +30,7 @@ public class VideoActivity extends AppCompatActivity {
             this.videoView.setVideoURI(uri);
             this.videoView.start();
         }catch ( Exception e){
-            Log.e( "onActivityResult", "exceptionThrown", e);
+            Log.e( "onCreate", "exceptionThrown", e);
         }
 
     }
