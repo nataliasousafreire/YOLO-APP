@@ -62,12 +62,11 @@ public class MainActivity extends AppCompatActivity {
 
                         selectedVideo = data.getData();
                         selectedVideoPath = selectedVideo.getPath();
-                        videoPlayer = new Intent(this, VideoActivity.class);
+                        videoPlayer = new Intent(this, DetectionActivity.class);
                         Log.d( "recordVideo", "source-path: "+selectedVideoPath);
                         videoPlayer.putExtra("VIDEO_PATH", selectedVideoPath);
                         videoPlayer.putExtra("VIDEO_URI", selectedVideo);
                         startActivity(videoPlayer);
-
 
                         break;
                     case REQUEST_TAKE_GALLERY_VIDEO:
@@ -78,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
                         videoPlayer.putExtra("VIDEO_PATH", selectedVideoPath);
                         videoPlayer.putExtra("VIDEO_URI", selectedVideo);
                         startActivity(videoPlayer);
+
                         break;
                 }
             }
