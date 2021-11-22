@@ -11,6 +11,7 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import java.io.File;
 
@@ -19,17 +20,51 @@ public class MainActivity extends AppCompatActivity {
     private static final int VIDEO_REQUEST = 999;
     private static final int REQUEST_TAKE_GALLERY_VIDEO = 888;
 
-    private ImageButton camButton;
-    private ImageButton uploadButton;
+    //private ImageButton camButton;
+    private ImageView uploadView;
+    private ImageView cameraView;
+    private ImageView arquivosView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        this.camButton = findViewById(R.id.imageButtonCamVideoRecord);
-        this.uploadButton = findViewById(R.id.imageViewUploadUndetectedVideo);
+        //View
+        uploadView = (ImageView) findViewById(R.id.imageViewUploadUndetectedVideo);
+        uploadView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // mudar para tela certo
+                Intent startIntent = new Intent(getApplicationContext(), VideoActivity.class);
+                startActivity(startIntent);
+            }
+        });
 
+        // Cam
+        cameraView = (ImageView) findViewById(R.id.imageViewCamVideoRecord);
+        cameraView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // mudar para tela certo
+                Intent startIntent = new Intent(getApplicationContext(), VideoActivity.class);
+                startActivity(startIntent);
+            }
+        });
+
+        //Arquivos
+        arquivosView = (ImageView) findViewById(R.id.imageViewVideoSamples);
+        arquivosView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // mudar para tela certo
+                Intent startIntent = new Intent(getApplicationContext(), VideoActivity.class);
+                startActivity(startIntent);
+            }
+        });
+
+        //camButton = findViewById(R.id.imageButtonCamVideoRecord);
     }
 
     public void recordVideo( View v){
