@@ -52,14 +52,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(startIntent);
             }
         });
-
         //Arquivos
         arquivosView = (ImageView) findViewById(R.id.imageViewVideoSamples);
         arquivosView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // mudar para tela certo
-                Intent startIntent = new Intent(getApplicationContext(), VideoActivity.class);
+                Intent startIntent = new Intent(getApplicationContext(), Listvideo.class);
                 startActivity(startIntent);
             }
         });
