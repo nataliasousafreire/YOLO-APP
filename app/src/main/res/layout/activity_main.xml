@@ -48,7 +48,7 @@
         app:layout_constraintEnd_toStartOf="@+id/imageViewCamVideoRecord"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView13"
-        app:srcCompat="@drawable/ic_launcher_foreground"
+        app:srcCompat="@android:drawable/ic_menu_upload"
         tools:srcCompat="@android:drawable/ic_menu_upload" />
 
     <ImageView
