@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
 
                         selectedVideo = data.getData();
                         selectedVideoPath = selectedVideo.getPath();
-                        videoPlayer = new Intent(this, VideoActivity.class);
+                        videoPlayer = new Intent(this, DetectionActivity.class);
                         videoPlayer.putExtra("VIDEO_PATH", selectedVideoPath);
                         videoPlayer.putExtra("VIDEO_URI", selectedVideo);
                         startActivity(videoPlayer);
