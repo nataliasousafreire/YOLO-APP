@@ -32,29 +32,27 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //View
-        uploadView = (ImageView) findViewById(R.id.imageViewUploadUndetectedVideo);
-        uploadView.setOnClickListener(new View.OnClickListener() {
+        this.uploadView = (ImageView) findViewById(R.id.imageViewUploadUndetectedVideo);
+        this.uploadView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // mudar para tela certo
-                Intent startIntent = new Intent(getApplicationContext(), VideoActivity.class);
-                startActivity(startIntent);
+                openStorageFolder( v);
             }
         });
 
         // Cam
-        cameraView = (ImageView) findViewById(R.id.imageViewCamVideoRecord);
-        cameraView.setOnClickListener(new View.OnClickListener() {
+        this.cameraView = (ImageView) findViewById(R.id.imageViewCamVideoRecord);
+        this.cameraView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // mudar para tela certo
-                Intent startIntent = new Intent(getApplicationContext(), VideoActivity.class);
-                startActivity(startIntent);
+                recordVideo( v);
             }
         });
         //Arquivos
-        arquivosView = (ImageView) findViewById(R.id.imageViewVideoSamples);
-        arquivosView.setOnClickListener(new View.OnClickListener() {
+        this.arquivosView = (ImageView) findViewById(R.id.imageViewVideoSamples);
+        this.arquivosView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // mudar para tela certo
@@ -92,7 +90,6 @@ public class MainActivity extends AppCompatActivity {
                         Uri selectedVideo;
                         String selectedVideoPath;
                         Intent videoPlayer;
-                        File file;
 
                         selectedVideo = data.getData();
                         selectedVideoPath = selectedVideo.getPath();
