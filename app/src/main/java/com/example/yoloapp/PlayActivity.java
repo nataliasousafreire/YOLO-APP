@@ -13,11 +13,12 @@ public class PlayActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play);
-        videoView = findViewById(R.id.videoView);
-
+        videoView = findViewById(R.id.videoView2);
+        // esconder a actionbar
+        getSupportActionBar().hide();
         // executar o video
         videoView.setMediaController( new MediaController(this));
-        videoView.setVideoPath("android.resource://" + getPackageName() + "/" + R.raw.dog_4727);
+        videoView.setVideoPath("android.resource://" + getPackageName() + "/" + R.raw.birddetect);
         videoView.start();
 
     }

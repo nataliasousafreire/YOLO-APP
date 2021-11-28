@@ -4,54 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cor_fundo"
+    android:background="@android:color/holo_blue_dark"
+    android:foregroundTint="@color/cor_fundo"
     tools:context=".Listvideo">
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="180dp"
-        android:layout_height="200dp"
+        android:layout_width="356dp"
+        android:layout_height="250dp"
         android:layout_marginTop="97dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.069"
+        app:layout_constraintHorizontal_bias="0.29"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView15"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@+id/ImageMain"
+        app:layout_constraintVertical_bias="0.025"
         app:srcCompat="@drawable/video1" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="180dp"
-        android:layout_height="200dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView6"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.069"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:srcCompat="@drawable/video2" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="180dp"
-        android:layout_height="200dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView6"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
-        app:srcCompat="@drawable/video3" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="180dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="97dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView15"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/video4" />
 
     <ImageView
         android:id="@+id/ImageExecutar"
@@ -65,61 +33,69 @@
         app:srcCompat="@drawable/play" />
 
     <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="108dp"
-        android:layout_height="52dp"
-        android:onClick="abrirvideo"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
-        app:layout_constraintEnd_toEndOf="@+id/imageView4"
-        app:layout_constraintStart_toStartOf="@+id/imageView4"
-        app:layout_constraintTop_toTopOf="@+id/imageView4"
-        app:srcCompat="@drawable/play" />
-
-    <ImageView
-        android:id="@+id/imageView10"
-        android:layout_width="108dp"
-        android:layout_height="52dp"
-        android:onClick="abrirvideo"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-        app:layout_constraintEnd_toEndOf="@+id/imageView2"
-        app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toTopOf="@+id/imageView2"
-        app:srcCompat="@drawable/play" />
-
-    <ImageView
-        android:id="@+id/imageView11"
-        android:layout_width="108dp"
-        android:layout_height="52dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-        app:layout_constraintEnd_toEndOf="@+id/imageView3"
-        app:layout_constraintStart_toStartOf="@+id/imageView3"
-        app:layout_constraintTop_toTopOf="@+id/imageView3"
-        app:srcCompat="@drawable/play" />
-
-    <ImageView
-        android:id="@+id/imageView15"
-        android:layout_width="393dp"
-        android:layout_height="66dp"
+        android:id="@+id/ImageMain"
+        android:layout_width="wrap_content"
+        android:layout_height="72dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.01"
+        app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/main"
-        tools:layout_editor_absoluteX="9dp"
-        tools:layout_editor_absoluteY="16dp" />
+        tools:layout_editor_absoluteY="1dp" />
 
     <TextView
         android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="71dp"
-        android:text="ARQUIVOS"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+        android:layout_width="364dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginBottom="572dp"
+        android:background="#FAF4F4"
+        android:backgroundTint="#FFFFFF"
+        android:text='Clique em qualquer vídeo e veja os "objetos" identificados!'
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.34"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ImageMain"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="15dp"
+        android:layout_height="729dp"
+        android:background="#FFFFFF"
+        android:backgroundTint="#FBFCFD"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="395dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
 
     <ImageView
-        android:id="@+id/ImageMain"
-        android:layout_width="50dp"
-        android:layout_height="62dp"
-        app:srcCompat="@android:drawable/divider_horizontal_dim_dark"
-        tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="16dp" />
+        android:id="@+id/imageViewVideoSamples2"
+        android:layout_width="77dp"
+        android:layout_height="74dp"
+        android:background="#2196F3"
+        android:backgroundTint="#2196F3"
+        app:srcCompat="@android:drawable/sym_contact_card"
+        tools:layout_editor_absoluteX="318dp"
+        tools:layout_editor_absoluteY="1dp"
+        tools:srcCompat="@android:drawable/sym_contact_card" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="356dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="23dp"
+        app:layout_constraintEnd_toStartOf="@+id/scrollView2"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:srcCompat="@drawable/video4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,6 +15,7 @@
         android:theme="@style/Theme.YOLOApp">
         <activity
             android:name=".PlayActivity"
+            android:screenOrientation="landscape"
             android:exported="false" />
         <activity
             android:name=".Listvideo"
