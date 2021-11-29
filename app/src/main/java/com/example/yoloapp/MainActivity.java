@@ -17,13 +17,12 @@ import java.io.File;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final int VIDEO_REQUEST = 999;
+    private static final int REQUEST_VIDEO = 999;
     private static final int REQUEST_TAKE_GALLERY_VIDEO = 888;
 
-    //private ImageButton camButton;
     private ImageView uploadView;
-    private ImageView cameraView;
-    private ImageView arquivosView;
+    private ImageView camView;
+    private ImageView samplesView;
 
 
     @Override
@@ -37,22 +36,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // mudar para tela certo
-                openStorageFolder( v);
+                takeGalleryVideo( v);
             }
         });
 
         // Cam
-        this.cameraView = (ImageView) findViewById(R.id.imageViewCamVideoRecord);
-        this.cameraView.setOnClickListener(new View.OnClickListener() {
+        this.camView = (ImageView) findViewById(R.id.imageViewCamVideoRecord);
+        this.camView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // mudar para tela certo
                 recordVideo( v);
             }
         });
-        //Arquivos
-        this.arquivosView = (ImageView) findViewById(R.id.imageViewVideoSamples);
-        this.arquivosView.setOnClickListener(new View.OnClickListener() {
+        //samples
+        this.samplesView = (ImageView) findViewById(R.id.imageViewVideoSamples);
+        this.samplesView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // mudar para tela certo
@@ -60,8 +59,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(startIntent);
             }
         });
-
-        //camButton = findViewById(R.id.imageButtonCamVideoRecord);
     }
 
     public void recordVideo( View v){
@@ -69,15 +66,31 @@ public class MainActivity extends AppCompatActivity {
 
         intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
         intent.putExtra( MediaStore.EXTRA_DURATION_LIMIT, 10);
-        startActivityForResult( intent, VIDEO_REQUEST);
+        startActivityForResult( intent, REQUEST_VIDEO);
     }
 
-    public void openStorageFolder(View v) {
+    public void takeGalleryVideo(View v) {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         Uri uri = Uri.parse(Environment.getExternalStorageDirectory().getPath()
                 +  File.separator + "myFolder" + File.separator);
         intent.setDataAndType(uri, "video/*");
         startActivityForResult(intent, REQUEST_TAKE_GALLERY_VIDEO);
+    }
+
+    public void openVideoPlayer( Uri selectedVideo){
+        Intent videoPlayer;
+
+        videoPlayer = new Intent(this, VideoActivity.class);
+        videoPlayer.putExtra("VIDEO_URI", selectedVideo);
+        startActivity(videoPlayer);
+    }
+
+    public void detect( Uri selectedVideo){
+        Intent videoPlayer;
+
+        videoPlayer = new Intent(this, DetectionActivity.class);
+        videoPlayer.putExtra("VIDEO_URI", selectedVideo);
+        startActivity(videoPlayer);
     }
 
     @Override
@@ -86,28 +99,20 @@ public class MainActivity extends AppCompatActivity {
         try{
             if( resultCode == RESULT_OK){
                 switch ( requestCode){
-                    case VIDEO_REQUEST:
-                        Uri selectedVideo;
+                    case REQUEST_VIDEO:
+                        Uri selectedVideoUri;
                         String selectedVideoPath;
-                        Intent videoPlayer;
 
-                        selectedVideo = data.getData();
-                        selectedVideoPath = selectedVideo.getPath();
-                        videoPlayer = new Intent(this, DetectionActivity.class);
+                        selectedVideoUri = data.getData();
+                        selectedVideoPath = selectedVideoUri.getPath();
                         Log.d( "recordVideo", "source-path: "+selectedVideoPath);
-                        videoPlayer.putExtra("VIDEO_PATH", selectedVideoPath);
-                        videoPlayer.putExtra("VIDEO_URI", selectedVideo);
-                        startActivity(videoPlayer);
-
+                        detect( selectedVideoUri);
                         break;
                     case REQUEST_TAKE_GALLERY_VIDEO:
 
-                        selectedVideo = data.getData();
-                        selectedVideoPath = selectedVideo.getPath();
-                        videoPlayer = new Intent(this, DetectionActivity.class);
-                        videoPlayer.putExtra("VIDEO_PATH", selectedVideoPath);
-                        videoPlayer.putExtra("VIDEO_URI", selectedVideo);
-                        startActivity(videoPlayer);
+                        selectedVideoUri = data.getData();
+                        selectedVideoPath = selectedVideoUri.getPath();
+                        detect( selectedVideoUri);
 
                         break;
                 }

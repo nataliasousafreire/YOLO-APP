@@ -3,6 +3,7 @@ package com.example.yoloapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -31,11 +32,10 @@ public class Listvideo extends AppCompatActivity {
         executar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // mudar para tela principal
-                Intent startIntent = new Intent(getApplicationContext(), PlayActivity.class);
-                startIntent.putExtra("itemSelecionado", 1);
+                Uri rawSourceUri;
 
-                startActivity(startIntent);
+                rawSourceUri = Uri.parse( "android.resource://" + getPackageName() + "/" + R.raw.peopledetect);
+                openVideoPlayer( rawSourceUri);
             }
 
         });
@@ -43,34 +43,41 @@ public class Listvideo extends AppCompatActivity {
         executar2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // mudar para tela principal
-                Intent startIntent = new Intent(getApplicationContext(), PlayActivity.class);
-                startIntent.putExtra("itemSelecionado", 2);
-                startActivity(startIntent);
+                Uri rawSourceUri;
+
+                rawSourceUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.dogdetect);
+                openVideoPlayer( rawSourceUri);
             }
 
         });
         executar3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // mudar para tela principal
-                Intent startIntent = new Intent(getApplicationContext(), PlayActivity.class);
-                startIntent.putExtra("itemSelecionado", 3);
-                startActivity(startIntent);
+                Uri rawSourceUri;
+
+                rawSourceUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.birddetect);
+                openVideoPlayer( rawSourceUri);
             }
 
         });
         executar4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // mudar para tela principal
-                Intent startIntent = new Intent(getApplicationContext(), PlayActivity.class);
-                startIntent.putExtra("itemSelecionado", 4);
-                startActivity(startIntent);
+                Uri rawSourceUri;
+
+                rawSourceUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.summerdetect);
+                openVideoPlayer( rawSourceUri);
             }
 
         });
 
+    }
+    public void openVideoPlayer( Uri selectedVideo){
+        Intent videoPlayer;
+
+        videoPlayer = new Intent(this, VideoActivity.class);
+        videoPlayer.putExtra("VIDEO_URI", selectedVideo);
+        startActivity(videoPlayer);
     }
 
 }

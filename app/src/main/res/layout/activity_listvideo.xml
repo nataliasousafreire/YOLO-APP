@@ -7,7 +7,6 @@
     android:background="#FFFFFF"
     android:backgroundTint="#673AB7"
     android:filterTouchesWhenObscured="false"
-    android:foreground="@drawable/ic_launcher_background"
     android:foregroundTint="#00FFFFFF"
     tools:context=".Listvideo">
 
@@ -26,7 +25,6 @@
         android:layout_width="320dp"
         android:layout_height="79dp"
         android:layout_gravity="center_vertical|end"
-        android:layout_marginBottom="408dp"
         android:background="#F6F0F0"
         android:backgroundTint="#8BC34A"
         android:backgroundTintMode="add"
@@ -35,15 +33,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.502" />
+        app:layout_constraintTop_toBottomOf="@+id/ImageMain"
+        app:layout_constraintVertical_bias="0.100000024" />
 
 
     <ImageView
         android:id="@+id/pessoa"
         android:layout_width="108dp"
         android:layout_height="52dp"
-        android:onClick="abrirvideo"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="@+id/imageView"
@@ -132,7 +129,6 @@
         android:id="@+id/ImageMain"
         android:layout_width="360dp"
         android:layout_height="71dp"
-        android:layout_marginBottom="244dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -147,7 +143,7 @@
         android:background="#000000"
         android:backgroundTint="#FFFFFF"
         android:text="Rua movimentada"
-        android:textColor="#000000"
+        android:textColor="#757575"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
         app:layout_constraintHorizontal_bias="0.481"
