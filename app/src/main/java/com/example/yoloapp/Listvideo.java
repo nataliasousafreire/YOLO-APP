@@ -23,14 +23,52 @@ public class Listvideo extends AppCompatActivity {
                 startActivity(startIntent);
             }
         });
-        ImageView executar = (ImageView) findViewById(R.id.ImageExecutar);
+        ImageView executar = (ImageView) findViewById(R.id.pessoa);
+        ImageView executar2 = (ImageView) findViewById(R.id.cachorro);
+        ImageView executar3 = (ImageView) findViewById(R.id.passaro);
+        ImageView executar4 = (ImageView) findViewById(R.id.praia);
+
         executar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // mudar para tela principal
                 Intent startIntent = new Intent(getApplicationContext(), PlayActivity.class);
+                startIntent.putExtra("itemSelecionado", 1);
+
                 startActivity(startIntent);
             }
+
+        });
+
+        executar2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // mudar para tela principal
+                Intent startIntent = new Intent(getApplicationContext(), PlayActivity.class);
+                startIntent.putExtra("itemSelecionado", 2);
+                startActivity(startIntent);
+            }
+
+        });
+        executar3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // mudar para tela principal
+                Intent startIntent = new Intent(getApplicationContext(), PlayActivity.class);
+                startIntent.putExtra("itemSelecionado", 3);
+                startActivity(startIntent);
+            }
+
+        });
+        executar4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // mudar para tela principal
+                Intent startIntent = new Intent(getApplicationContext(), PlayActivity.class);
+                startIntent.putExtra("itemSelecionado", 4);
+                startActivity(startIntent);
+            }
+
         });
 
     }
